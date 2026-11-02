@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kopi Banua - Kedai Kopi Robusta Asli di Banjarmasin</title>
+    <meta name="description" content="Kopi Banua, kedai kopi rumahan di Banjarmasin. Nikmati kopi Robusta Pengaron yang disangrai setiap pagi, kopi susu gula aren, dan roti bakar srikaya.">
+    <meta name="theme-color" content="#6F4E37">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+  </head>
+
+  <body>
+    <!-- Tautan lompat untuk pengguna keyboard / pembaca layar -->
+    <a class="lewati-konten" href="#konten-utama">Lewati ke konten utama</a>
+
+    <!-- ===== HEADER & NAVIGASI ===== -->
+    <header class="header" id="atas">
+      <div class="kontainer header-isi">
+        <a class="merek" href="#atas">
+          <img src="img/logo.png" alt="Logo Kopi Banua" width="300" height="100">
+        </a>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Buka menu navigasi">
+          <span class="nav-garis"></span>
+          <span class="nav-garis"></span>
+          <span class="nav-garis"></span>
+        </button>
+
+        <nav class="nav" aria-label="Navigasi utama">
+          <ul class="nav-menu" id="nav-menu">
+            <li><a class="nav-tautan" href="#tentang">Tentang</a></li>
+            <li><a class="nav-tautan" href="#menu">Menu</a></li>
+            <li><a class="nav-tautan" href="#jam">Jam Buka</a></li>
+            <li><a class="nav-tautan" href="#galeri">Galeri</a></li>
+            <li><a class="nav-tautan" href="#kontak">Kontak</a></li>
+            <li><a class="nav-tautan nav-tautan-pesan" href="#pesan">Pesan</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="konten-utama">
+      <!-- ===== HERO ===== -->
+      <section class="hero">
+        <div class="kontainer hero-isi">
+          <div class="hero-teks">
+            <h1 class="hero-judul">Kopi Banua, Kopi Robusta Asli Banjarmasin</h1>
+            <p class="hero-subjudul">Biji Robusta dari petani Pengaron, disangrai sendiri setiap pagi di Jalan Sultan Adam.</p>
+            <div class="hero-aksi">
+              <a class="tombol" href="#menu">Lihat Menu</a>
+              <a class="tombol tombol-garis" href="#pesan">Pesan Sekarang</a>
+            </div>
+            <p class="status-buka" id="status-buka" aria-live="polite"></p>
+          </div>
+          <div class="hero-foto">
+            <img src="img/kedai.jpg" alt="Suasana kedai Kopi Banua pada sore hari" width="800" height="600">
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== PROMO (bisa ditutup) ===== -->
+      <aside class="promo" id="promo">
+        <div class="kontainer promo-isi">
+          <p class="promo-teks"><strong>Promo hari ini:</strong> beli 2 Kopi Susu Gula Aren, gratis 1 Roti Bakar Srikaya.</p>
+          <button class="promo-tutup" id="promo-tutup" type="button" aria-label="Tutup promo">Tutup</button>
+        </div>
+      </aside>
+
+      <!-- ===== TENTANG ===== -->
+      <section class="bagian" id="tentang">
+        <div class="kontainer">
+          <h2 class="bagian-judul">Tentang Kami</h2>
+          <p class="bagian-pengantar">Kopi Banua adalah kedai kopi rumahan yang berdiri sejak 2021 di Jalan Sultan Adam, Banjarmasin. Kami memakai biji Robusta dari petani Pengaron dan menyangrai sendiri setiap pagi.</p>
+
+          <ul class="fakta">
+            <li class="fakta-item">
+              <span class="fakta-nilai">2021</span>
+              <span class="fakta-label">Mulai buka di Banjarmasin</span>
+            </li>
+            <li class="fakta-item">
+              <span class="fakta-nilai">Pengaron</span>
+              <span class="fakta-label">Asal biji Robusta pilihan</span>
+            </li>
+            <li class="fakta-item">
+              <span class="fakta-nilai">Tiap pagi</span>
+              <span class="fakta-label">Disangrai sendiri, tidak distok</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ===== MENU ===== -->
+      <section class="bagian bagian-alt" id="menu">
+        <div class="kontainer">
+          <h2 class="bagian-judul">Menu Favorit</h2>
+          <p class="bagian-pengantar">Pilih kategori untuk menyaring menu, lalu tekan Pesan pada menu yang kamu mau.</p>
+
+          <div class="filter" role="group" aria-label="Filter kategori menu">
+            <button class="filter-tombol" type="button" data-filter="semua" aria-pressed="true">Semua</button>
+            <button class="filter-tombol" type="button" data-filter="kopi" aria-pressed="false">Kopi</button>
+            <button class="filter-tombol" type="button" data-filter="minuman" aria-pressed="false">Non-kopi</button>
+            <button class="filter-tombol" type="button" data-filter="makanan" aria-pressed="false">Makanan</button>
+          </div>
+
+          <div class="grid-menu">
+            <article class="kartu-menu" data-kategori="kopi">
+              <img class="kartu-gambar" src="img/kopi-susu.jpg" alt="Kopi Susu Gula Aren" width="600" height="450" loading="lazy">
+              <div class="kartu-isi">
+                <h3 class="kartu-judul">Kopi Susu Gula Aren</h3>
+                <p class="kartu-deskripsi">Espresso Robusta, susu segar, dan gula aren asli yang manis legit.</p>
+                <p class="harga">Rp 18.000</p>
+              </div>
+              <a class="tombol tombol-pesan" href="#pesan" data-menu="kopi-susu">Pesan<span class="sr-only"> Kopi Susu Gula Aren</span></a>
+            </article>
+
+            <article class="kartu-menu" data-kategori="kopi">
+              <img class="kartu-gambar" src="img/americano.jpg" alt="Americano Panas" width="600" height="450" loading="lazy">
+              <div class="kartu-isi">
+                <h3 class="kartu-judul">Americano Panas</h3>
+                <p class="kartu-deskripsi">Espresso Robusta dengan air panas. Pahit tegas, aroma pekat.</p>
+                <p class="harga">Rp 15.000</p>
+              </div>
+              <a class="tombol tombol-pesan" href="#pesan" data-menu="americano">Pesan<span class="sr-only"> Americano Panas</span></a>
+            </article>
+
+            <article class="kartu-menu" data-kategori="kopi">
+              <img class="kartu-gambar" src="img/kopi-tubruk-banua.jpg" alt="Kopi Tubruk Banua" width="600" height="450" loading="lazy">
+              <div class="kartu-isi">
+                <h3 class="kartu-judul">Kopi Tubruk Banua</h3>
+                <p class="kartu-deskripsi">Seduhan tradisional dari Robusta sangrai pagi ini, disajikan apa adanya.</p>
+                <p class="harga">Rp 12.000</p>
+              </div>
+              <a class="tombol tombol-pesan" href="#pesan" data-menu="tubruk">Pesan<span class="sr-only"> Kopi Tubruk Banua</span></a>
+            </article>
+
+            <article class="kartu-menu" data-kategori="kopi">
+              <img class="kartu-gambar" src="img/kappuccino.jpg" alt="Cappuccino" width="600" height="450" loading="lazy">
+              <div class="kartu-isi">
+                <h3 class="kartu-judul">Cappuccino</h3>
+                <p class="kartu-deskripsi">Espresso dengan susu panas dan lapisan busa yang lembut.</p>
+                <p class="harga">Rp 20.000</p>
+              </div>
+              <a class="tombol tombol-pesan" href="#pesan" data-menu="cappuccino">Pesan<span class="sr-only"> Cappuccino</span></a>
+            </article>
+
+            <article class="kartu-menu" data-kategori="minuman">
+              <img class="kartu-gambar" src="img/teh-tarik.jpg" alt="Teh Tarik" width="600" height="450" loading="lazy">
+              <div class="kartu-isi">
+                <h3 class="kartu-judul">Teh Tarik</h3>
+                <p class="kartu-deskripsi">Teh hitam pekat ditarik dengan susu sampai berbusa. Hangat dan creamy.</p>
+                <p class="harga">Rp 18.000</p>
+              </div>
+              <a class="tombol tombol-pesan" href="#pesan" data-menu="teh-tarik">Pesan<span class="sr-only"> Teh Tarik</span></a>
+            </article>
+
+            <article class="kartu-menu" data-kategori="makanan">
+              <img class="kartu-gambar" src="img/roti-bakar-srikaya.jpg" alt="Roti Bakar Srikaya" width="600" height="450" loading="lazy">
+              <div class="kartu-isi">
+                <h3 class="kartu-judul">Roti Bakar Srikaya</h3>
+                <p class="kartu-deskripsi">Roti bakar renyah dengan selai srikaya, teman pas untuk segelas kopi.</p>
+                <p class="harga">Rp 15.000</p>
+              </div>
+              <a class="tombol tombol-pesan" href="#pesan" data-menu="roti-bakar">Pesan<span class="sr-only"> Roti Bakar Srikaya</span></a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== JAM BUKA ===== -->
+      <section class="bagian" id="jam">
+        <div class="kontainer">
+          <h2 class="bagian-judul">Jam Buka</h2>
+          <p class="bagian-pengantar">Baris untuk hari ini akan otomatis disorot (waktu Banjarmasin, WITA).</p>
+
+          <div class="tabel-bungkus">
+            <table class="tabel">
+              <thead>
+                <tr>
+                  <th scope="col">Hari</th>
+                  <th scope="col">Buka</th>
+                  <th scope="col">Tutup</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-hari="1 2 3 4 5" data-buka="08:00" data-tutup="22:00">
+                  <td>Senin - Jumat</td>
+                  <td>08:00</td>
+                  <td>22:00</td>
+                </tr>
+                <tr data-hari="0 6" data-buka="09:00" data-tutup="23:00">
+                  <td>Sabtu - Minggu</td>
+                  <td>09:00</td>
+                  <td>23:00</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== GALERI ===== -->
+      <section class="bagian bagian-alt" id="galeri">
+        <div class="kontainer">
+          <h2 class="bagian-judul">Galeri</h2>
+
+          <div class="galeri">
+            <figure class="galeri-item">
+              <img src="img/kopi-susu.jpg" alt="Segelas kopi susu gula aren" width="600" height="450" loading="lazy">
+              <figcaption class="galeri-teks">Segelas kopi susu gula aren</figcaption>
+            </figure>
+            <figure class="galeri-item">
+              <img src="img/kedai.jpg" alt="Suasana kedai pada sore hari" width="600" height="450" loading="lazy">
+              <figcaption class="galeri-teks">Suasana kedai pada sore hari</figcaption>
+            </figure>
+            <figure class="galeri-item">
+              <img src="img/biji-kopi.jpg" alt="Biji robusta setelah disangrai" width="600" height="450" loading="lazy">
+              <figcaption class="galeri-teks">Biji robusta setelah disangrai</figcaption>
+            </figure>
+          </div>
+
+          <div class="media">
+            <div class="media-blok">
+              <h3 class="media-judul">Video proses sangrai</h3>
+              <video class="media-video" src="img/proses-sangrai.mp4" controls preload="metadata">
+                Browser kamu tidak mendukung video.
+              </video>
+            </div>
+            <div class="media-blok">
+              <h3 class="media-judul">Peta lokasi</h3>
+              <iframe class="media-peta" title="Peta lokasi Kopi Banua di Banjarmasin" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15932.96338868529!2d114.59101886314346!3d-3.2904121064951735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2de4230a40a7d83b%3A0xbc84dbf843bfe784!2sMushalla%20Hunafaa!5e0!3m2!1sid!2sid!4v1790931164742!5m2!1sid!2sid" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== KONTAK ===== -->
+      <section class="bagian" id="kontak">
+        <div class="kontainer">
+          <h2 class="bagian-judul">Kontak Kami</h2>
+          <ul class="kontak-daftar">
+            <li>WhatsApp: <a class="tautan" href="https://wa.me/6286767676767">086767676767</a></li>
+            <li>Surel: <a class="tautan" href="mailto:halo@kopibanua.co.id">halo@kopibanua.co.id</a></li>
+            <li>Alamat: Jalan Sultan Adam No. 12, Banjarmasin</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ===== FORMULIR PEMESANAN ===== -->
+      <section class="bagian bagian-alt" id="pesan">
+        <div class="kontainer kontainer-sempit">
+          <h2 class="bagian-judul">Pesan Sekarang</h2>
+          <p class="bagian-pengantar">Isi formulir, lalu kirim pesananmu lewat WhatsApp.</p>
+
+          <form class="form" id="form-pesan" action="#" method="post" novalidate>
+            <div class="form-grup">
+              <label class="form-label" for="nama">Nama lengkap</label>
+              <input class="form-input" type="text" id="nama" name="nama" required placeholder="Nama Anda" autocomplete="name" aria-describedby="error-nama">
+              <p class="form-error" id="error-nama"></p>
+            </div>
+
+            <div class="form-grup">
+              <label class="form-label" for="wa">Nomor WhatsApp</label>
+              <input class="form-input" type="tel" id="wa" name="wa" required pattern="08[0-9]{8,11}" placeholder="08xxxxxxxxxx" autocomplete="tel" aria-describedby="error-wa">
+              <p class="form-error" id="error-wa"></p>
+            </div>
+
+            <div class="form-grup">
+              <label class="form-label" for="pilih-menu">Pilih menu</label>
+              <select class="form-input" id="pilih-menu" name="menu" required aria-describedby="error-menu">
+                <option value="" data-harga="0">-- pilih salah satu --</option>
+                <option value="kopi-susu" data-harga="18000">Kopi Susu Gula Aren - Rp 18.000</option>
+                <option value="americano" data-harga="15000">Americano Panas - Rp 15.000</option>
+                <option value="tubruk" data-harga="12000">Kopi Tubruk Banua - Rp 12.000</option>
+                <option value="cappuccino" data-harga="20000">Cappuccino - Rp 20.000</option>
+                <option value="teh-tarik" data-harga="18000">Teh Tarik - Rp 18.000</option>
+                <option value="roti-bakar" data-harga="15000">Roti Bakar Srikaya - Rp 15.000</option>
+              </select>
+              <p class="form-error" id="error-menu"></p>
+            </div>
+
+            <div class="form-grup">
+              <label class="form-label" for="jumlah">Jumlah</label>
+              <input class="form-input" type="number" id="jumlah" name="jumlah" min="1" max="20" value="1" aria-describedby="error-jumlah">
+              <p class="form-error" id="error-jumlah"></p>
+            </div>
+
+            <div class="form-grup">
+              <label class="form-label" for="catatan">Catatan</label>
+              <textarea class="form-input" id="catatan" name="catatan" rows="3" maxlength="200" placeholder="Contoh: gula dikurangi"></textarea>
+              <p class="form-bantuan"><span id="hitung-catatan">0</span>/200 karakter</p>
+            </div>
+
+            <p class="form-total">Perkiraan total: <strong id="total-harga">Rp 0</strong></p>
+
+            <button class="tombol" type="submit">Kirim Pesanan</button>
+          </form>
+
+          <div class="konfirmasi" id="konfirmasi" role="status" hidden>
+            <h3 class="konfirmasi-judul">Pesanan siap dikirim</h3>
+            <p class="konfirmasi-teks" id="konfirmasi-teks"></p>
+            <a class="tombol" id="tautan-wa" href="https://wa.me/6286767676767" target="_blank" rel="noopener">Kirim pesanan lewat WhatsApp</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+      <div class="kontainer footer-isi">
+        <div class="footer-kolom">
+          <h2 class="footer-judul">Kopi Banua</h2>
+          <p>Jalan Sultan Adam No. 12, Banjarmasin</p>
+        </div>
+        <div class="footer-kolom">
+          <p><a class="footer-tautan" href="#atas">Kembali ke atas</a></p>
+          <p>&copy; 2026 Kopi Banua. Dibuat untuk tugas Pemrograman Web 1</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
