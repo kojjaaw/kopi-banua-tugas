@@ -13,9 +13,9 @@ Landing page untuk UMKM kedai kopi. Menampilkan profil usaha, daftar menu dan ha
 - HTML5 semantik  - CSS3 (Flexbox & Grid)  - JavaScript (vanilla)
 
 ## Fitur
-1. Navigasi lengket dan menu hamburger pada layar ponsel
-2. Tata letak responsif pada tiga breakpoint
-3. Validasi form pemesanan dengan JavaScript
+1. fiturnya keren
+2. keren banget, bener kata no 1
+3. no 1 & 2 benar
 
 ## Struktur Berkas
 index.html, css/style.css, js/script.js, img/, dokumentasi/

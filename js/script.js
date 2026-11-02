@@ -1,23 +1,12 @@
-/* ==========================================================
-   SCRIPT.JS - Kopi Banua (Vanilla JavaScript)
-   Isi: 1. Navbar mobile  2. Filter menu  3. Tombol pesan
-        4. Status jam buka  5. Promo  6. Formulir pesanan
-   ========================================================== */
 
-// Nomor WhatsApp kedai (format internasional, tanpa tanda +)
 const NOMOR_WA_KEDAI = '6286767676767';
 
-// Pengubah angka menjadi format rupiah, contoh: Rp 18.000
 const formatRupiah = new Intl.NumberFormat('id-ID', {
   style: 'currency',
   currency: 'IDR',
   maximumFractionDigits: 0
 });
 
-
-/* ----------------------------------------------------------
-   1. NAVBAR MOBILE: buka/tutup menu dengan tombol hamburger
-   ---------------------------------------------------------- */
 const tombolNav = document.querySelector('.nav-toggle');
 const menuNav = document.querySelector('.nav-menu');
 
@@ -32,14 +21,12 @@ tombolNav.addEventListener('click', () => {
   aturMenuNav(!sedangBuka);
 });
 
-// Menu otomatis menutup setelah salah satu tautan diklik
 menuNav.addEventListener('click', (event) => {
   if (event.target.closest('a')) {
     aturMenuNav(false);
   }
 });
 
-// Tombol Escape menutup menu
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') {
     aturMenuNav(false);
@@ -47,31 +34,19 @@ document.addEventListener('keydown', (event) => {
 });
 
 
-/* ----------------------------------------------------------
-   2. FILTER MENU: tampilkan kartu sesuai kategori
-   ---------------------------------------------------------- */
 const tombolFilter = document.querySelectorAll('.filter-tombol');
 const kartuMenu = document.querySelectorAll('.kartu-menu');
 
-tombolFilter.forEach((tombol) => {
   tombol.addEventListener('click', () => {
     const kategori = tombol.dataset.filter;
-
-    // Tandai tombol yang aktif
     tombolFilter.forEach((t) => t.setAttribute('aria-pressed', String(t === tombol)));
-
-    // Tampilkan / sembunyikan kartu
     kartuMenu.forEach((kartu) => {
       const cocok = kategori === 'semua' || kartu.dataset.kategori === kategori;
       kartu.hidden = !cocok;
     });
   });
-});
 
 
-/* ----------------------------------------------------------
-   3. TOMBOL "PESAN": isi pilihan menu di formulir otomatis
-   ---------------------------------------------------------- */
 const formPesan = document.getElementById('form-pesan');
 const pilihMenu = document.getElementById('pilih-menu');
 const inputJumlah = document.getElementById('jumlah');
@@ -82,25 +57,20 @@ document.querySelectorAll('.tombol-pesan').forEach((tautan) => {
     pilihMenu.value = tautan.dataset.menu;
     hitungTotal();
     hapusError('menu');
-    // Halaman akan menggulir ke #pesan lewat href bawaan tautan
   });
 });
 
 
-/* ----------------------------------------------------------
-   4. STATUS JAM BUKA: sorot hari ini + tampilkan Buka/Tutup
-   ---------------------------------------------------------- */
+
 const barisJam = document.querySelectorAll('[data-hari]');
 const teksStatus = document.getElementById('status-buka');
 
-// Ubah "08:00" menjadi menit sejak tengah malam (480)
 function keMenit(jam) {
   const [j, m] = jam.split(':').map(Number);
   return j * 60 + m;
 }
 
 function perbaruiStatusBuka() {
-  // Ambil waktu sekarang di zona WITA (Banjarmasin)
   const sekarang = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Makassar' }));
   const hari = sekarang.getDay(); // 0 = Minggu ... 6 = Sabtu
   const menitSekarang = sekarang.getHours() * 60 + sekarang.getMinutes();
@@ -133,22 +103,14 @@ perbaruiStatusBuka();
 setInterval(perbaruiStatusBuka, 60000); // perbarui tiap 1 menit
 
 
-/* ----------------------------------------------------------
-   5. PROMO: tombol Tutup menyembunyikan banner
-   ---------------------------------------------------------- */
 document.getElementById('promo-tutup').addEventListener('click', () => {
   document.getElementById('promo').hidden = true;
 });
 
-
-/* ----------------------------------------------------------
-   6. FORMULIR PESANAN: total harga, validasi, dan konfirmasi
-   ---------------------------------------------------------- */
 const inputCatatan = document.getElementById('catatan');
 const hitungCatatan = document.getElementById('hitung-catatan');
 const kotakKonfirmasi = document.getElementById('konfirmasi');
 
-// Hitung perkiraan total = harga menu x jumlah
 function hitungTotal() {
   const harga = Number(pilihMenu.selectedOptions[0].dataset.harga);
   const jumlah = Number(inputJumlah.value);
@@ -178,7 +140,6 @@ const aturanValidasi = {
   }
 };
 
-// Peta nama aturan -> elemen input
 const kolomForm = {
   nama: document.getElementById('nama'),
   wa: document.getElementById('wa'),
@@ -196,14 +157,12 @@ function hapusError(nama) {
   tampilkanError(nama, '');
 }
 
-// Cek satu kolom; kembalikan true jika valid
 function validasiKolom(nama) {
   const pesan = aturanValidasi[nama](kolomForm[nama].value);
   tampilkanError(nama, pesan);
   return pesan === '';
 }
 
-// Validasi langsung saat pengguna selesai mengisi kolom
 Object.keys(kolomForm).forEach((nama) => {
   kolomForm[nama].addEventListener('blur', () => validasiKolom(nama));
 });
@@ -211,7 +170,6 @@ Object.keys(kolomForm).forEach((nama) => {
 formPesan.addEventListener('submit', (event) => {
   event.preventDefault();
 
-  // Cek semua kolom, fokuskan kolom pertama yang salah
   let kolomSalahPertama = null;
   Object.keys(kolomForm).forEach((nama) => {
     if (!validasiKolom(nama) && !kolomSalahPertama) {
@@ -224,7 +182,6 @@ formPesan.addEventListener('submit', (event) => {
     return;
   }
 
-  // Semua valid: susun ringkasan pesanan
   const namaMenu = pilihMenu.selectedOptions[0].textContent.split(' - Rp')[0];
   const jumlah = Number(inputJumlah.value);
   const total = pilihMenu.selectedOptions[0].dataset.harga * jumlah;
@@ -234,7 +191,6 @@ formPesan.addEventListener('submit', (event) => {
   document.getElementById('konfirmasi-teks').textContent =
     `Terima kasih, ${kolomForm.nama.value.trim()}! Pesananmu: ${ringkasan}`;
 
-  // Susun pesan WhatsApp
   const pesanWa = [
     'Halo Kopi Banua, saya mau pesan:',
     `Nama: ${kolomForm.nama.value.trim()}`,
@@ -250,11 +206,9 @@ formPesan.addEventListener('submit', (event) => {
   kotakKonfirmasi.hidden = false;
   kotakKonfirmasi.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
-  // Kosongkan formulir untuk pesanan berikutnya
   formPesan.reset();
   hitungCatatan.textContent = '0';
   hitungTotal();
 });
 
-// Tampilkan total awal (Rp 0)
 hitungTotal();

@@ -1,12 +1,4 @@
-/* ==========================================================
-   STYLE.CSS - Kopi Banua
-   Urutan: 1. Reset  2. Variabel  3. Dasar  4. Komponen  5. Media query
-   ========================================================== */
 
-
-/* ==========================================================
-   1. RESET
-   ========================================================== */
 *,
 *::before,
 *::after {
@@ -31,10 +23,6 @@ ul {
   list-style: none;
 }
 
-
-/* ==========================================================
-   2. VARIABEL (warna, jarak, ukuran dipanggil lewat var())
-   ========================================================== */
 :root {
   /* Warna */
   --warna-utama: #6F4E37;
@@ -71,10 +59,6 @@ ul {
   --font-judul: 'Poppins', Arial, sans-serif;
 }
 
-
-/* ==========================================================
-   3. DASAR (elemen HTML umum)
-   ========================================================== */
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
@@ -114,12 +98,6 @@ h3 {
   outline-offset: 2px;
 }
 
-
-/* ==========================================================
-   4. KOMPONEN
-   ========================================================== */
-
-/* ----- Utilitas ----- */
 .kontainer {
   width: 100%;
   max-width: var(--lebar-maks);
@@ -155,7 +133,6 @@ h3 {
   transform: translateY(0);
 }
 
-/* ----- Tombol ----- */
 .tombol {
   display: inline-flex;
   align-items: center;
@@ -189,7 +166,6 @@ h3 {
   color: var(--warna-putih);
 }
 
-/* ----- Header & navigasi ----- */
 .header {
   position: sticky;
   top: 0;
@@ -309,7 +285,6 @@ h3 {
   box-shadow: var(--bayangan-besar);
 }
 
-/* ----- Promo ----- */
 .promo {
   background: var(--warna-sorot);
 }
@@ -408,7 +383,6 @@ h3 {
   color: var(--warna-putih);
 }
 
-/* ----- Kartu menu ----- */
 .grid-menu {
   display: grid;
   grid-template-columns: 1fr;
@@ -453,7 +427,6 @@ h3 {
   color: var(--warna-aksen);
 }
 
-/* ----- Tabel jam buka ----- */
 .tabel-bungkus {
   overflow-x: auto;
 }
@@ -481,7 +454,6 @@ h3 {
   font-weight: 700;
 }
 
-/* ----- Galeri, video, peta ----- */
 .galeri {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
@@ -611,17 +583,10 @@ h3 {
   color: var(--warna-krem);
 }
 
-/* ----- Atribut hidden (harus setelah komponen yang memakai display) ----- */
 [hidden] {
   display: none;
 }
 
-
-/* ==========================================================
-   5. MEDIA QUERY (mobile-first: 360px dasar, 768px, 1024px)
-   ========================================================== */
-
-/* Tablet ke atas */
 @media (min-width: 768px) {
   .nav-toggle {
     display: none;
